@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speech2TurboWarp Extension Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        .section {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #666;
+            font-size: 1.2em;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .important {
+            background-color: #fff3cd;
+            border-color: #ffeaa7;
+            color: #856404;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech2TurboWarp Extension</h1>
+    
+    <div class="section">
+        <h2>概要</h2>
+        <p>Speech2TurboWarpは、ブラウザの音声認識APIを使用してTurboWarpで音声入力を可能にする拡張機能です。</p>
+    </div>
+
+    <div class="section">
+        <h2>使い方</h2>
+        <ol>
+            <li>TurboWarpエディターを開く: <a href="https://turbowarp.org/editor" target="_blank">https://turbowarp.org/editor</a></li>
+            <li>「拡張機能」ボタンをクリック（左下のブロックパレットの一番下）</li>
+            <li>「カスタム拡張機能」を選択</li>
+            <li>このファイルのURLを入力するか、ローカルHTTPサーバー経由でアクセス</li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>ローカルHTTPサーバーの起動方法</h2>
+        <pre>
+# Python 3の場合
+python3 -m http.server 8000
+
+# Python 2の場合
+python -m SimpleHTTPServer 8000
+
+# Node.jsの場合（http-serverをインストール済み）
+http-server -p 8000
+        </pre>
+        <p>サーバーを起動したら、TurboWarpのカスタム拡張機能URLに以下を入力:</p>
+        <code>http://localhost:8000/speech2turbowarp.js</code>
+    </div>
+
+    <div class="section important">
+        <h2>重要な注意事項</h2>
+        <ul>
+            <li>音声認識にはマイクへのアクセス許可が必要です</li>
+            <li>HTTPSまたはlocalhostでのみ動作します</li>
+            <li>対応ブラウザ: Chrome, Edge, Safari（一部）</li>
+            <li>日本語認識に設定されています（変更可能）</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>ブロックの説明</h2>
+        <ul>
+            <li><strong>音声認識開始</strong>: 音声認識を開始します</li>
+            <li><strong>音声</strong>: 認識された音声テキストを返します</li>
+            <li><strong>音声認識中</strong>: 現在音声認識中かどうかを返します</li>
+            <li><strong>音声認識停止</strong>: 音声認識を停止します</li>
+            <li><strong>音声が認識されたとき</strong>: 音声が認識されたときに実行されるイベントブロック</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>サンプルプロジェクト</h2>
+        <p>以下のようなプログラムを作成できます:</p>
+        <pre>
+[音声が認識されたとき]
+もし &lt;(音声) = [こんにちは]&gt; なら
+  [こんにちは！] と言う
+でなければ もし &lt;(音声) = [ありがとう]&gt; なら
+  [どういたしまして！] と言う
+        </pre>
+    </div>
+</body>
+</html>
