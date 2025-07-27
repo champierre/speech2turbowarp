@@ -1,9 +1,6 @@
 (function(Scratch) {
     'use strict';
 
-    if (!Scratch.extensions.unsandboxed) {
-        throw new Error('Speech2TurboWarp extension must be run unsandboxed');
-    }
 
     const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
 
@@ -30,7 +27,7 @@
                         text: '音声'
                     },
                     {
-                        opcode: 'isListening',
+                        opcode: 'getIsListening',
                         blockType: Scratch.BlockType.BOOLEAN,
                         text: '音声認識中'
                     },
@@ -103,7 +100,7 @@
             return this.speech;
         }
 
-        isListening() {
+        getIsListening() {
             return this.isListening;
         }
 

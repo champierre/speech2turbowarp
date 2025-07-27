@@ -19,6 +19,7 @@ TurboWarp用の音声認識拡張機能です。ブラウザの音声認識API�
 2. 左下の「拡張機能」ボタンをクリック
 3. 「カスタム拡張機能」を選択
 4. 以下のURLを入力:
+   - シンプル版: `https://[your-domain]/speech2turbowarp-simple.js`
    - 基本版: `https://[your-domain]/speech2turbowarp.js`
    - 拡張版: `https://[your-domain]/speech2turbowarp-enhanced.js`
 
@@ -28,12 +29,15 @@ TurboWarp用の音声認識拡張機能です。ブラウザの音声認識API�
 2. ローカルHTTPサーバーを起動:
    ```bash
    # Python 3
-   python3 -m http.server 8000
+   python3 -m http.server 8080
    
    # Node.js (http-serverインストール済み)
-   npx http-server -p 8000
+   npx http-server -p 8080
    ```
-3. TurboWarpで `http://localhost:8000/speech2turbowarp-enhanced.js` を読み込み
+3. TurboWarpで以下のURLを読み込み:
+   - シンプル版: `http://localhost:8080/speech2turbowarp-simple.js`
+   - 基本版: `http://localhost:8080/speech2turbowarp.js`
+   - 拡張版: `http://localhost:8080/speech2turbowarp-enhanced.js`
 
 ## 使用可能なブロック
 
@@ -112,7 +116,30 @@ end
 - Italiano (it-IT)
 - Português (pt-BR)
 
-## 注意事項
+## 重要な注意事項
+
+### Unsandboxed拡張機能として実行する場合
+
+音声認識APIを使用するには、拡張機能をunsandboxedモードで実行する必要があります。TurboWarpでは以下のURLパターンのみがunsandboxedモードで実行されます：
+
+1. **`http://localhost:8000/`** (ポート8000必須)
+2. **`https://extensions.turbowarp.org/`**
+
+### セットアップ手順
+
+1. ローカルサーバーをポート8000で起動:
+   ```bash
+   # Python 3
+   python3 -m http.server 8000
+   
+   # Node.js
+   npx http-server -p 8000
+   ```
+
+2. TurboWarpで以下のURLを読み込み:
+   - `http://localhost:8000/speech2turbowarp-unsandboxed.js`
+
+### その他の注意事項
 
 - **マイクへのアクセス許可が必要です**
 - **HTTPSまたはlocalhostでのみ動作します**
