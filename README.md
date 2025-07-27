@@ -19,9 +19,9 @@ TurboWarp用の音声認識拡張機能です。ブラウザの音声認識API�
 2. 左下の「拡張機能」ボタンをクリック
 3. 「カスタム拡張機能」を選択
 4. 以下のURLを入力:
-   - シンプル版: `https://[your-domain]/speech2turbowarp-simple.js`
-   - 基本版: `https://[your-domain]/speech2turbowarp.js`
-   - 拡張版: `https://[your-domain]/speech2turbowarp-enhanced.js`
+   - `https://champierre.github.io/speech2turbowarp/index.js`
+
+**注意**: HTTPSからの読み込みでは、ブラウザのセキュリティ制限により「not-allowed」エラーが発生する場合があります。その場合は、方法2のローカルサーバー経由での使用を推奨します。
 
 ### 方法2: ローカルHTTPサーバー経由
 
@@ -29,15 +29,13 @@ TurboWarp用の音声認識拡張機能です。ブラウザの音声認識API�
 2. ローカルHTTPサーバーを起動:
    ```bash
    # Python 3
-   python3 -m http.server 8080
+   python3 -m http.server 8000
    
    # Node.js (http-serverインストール済み)
-   npx http-server -p 8080
+   npx http-server -p 8000
    ```
 3. TurboWarpで以下のURLを読み込み:
-   - シンプル版: `http://localhost:8080/speech2turbowarp-simple.js`
-   - 基本版: `http://localhost:8080/speech2turbowarp.js`
-   - 拡張版: `http://localhost:8080/speech2turbowarp-enhanced.js`
+   - `http://localhost:8000/index.js`
 
 ## 使用可能なブロック
 
@@ -137,12 +135,13 @@ end
    ```
 
 2. TurboWarpで以下のURLを読み込み:
-   - `http://localhost:8000/speech2turbowarp-unsandboxed.js`
+   - `http://localhost:8000/index.js`
 
 ### その他の注意事項
 
 - **マイクへのアクセス許可が必要です**
 - **HTTPSまたはlocalhostでのみ動作します**
+- **HTTPSサイトからの読み込み時の制限**: GitHub Pagesなど、HTTPSサイトから拡張機能を読み込む場合、ブラウザのセキュリティ制限により音声認識が正常に動作しない場合があります。安定した動作のためには`localhost:8000`からの読み込みを推奨します。
 - **対応ブラウザ**: Chrome, Edge, Safari（一部機能）
 - 音声認識の精度は環境やマイクの品質に依存します
 - 連続認識モードではバッテリー消費が増加する可能性があります
